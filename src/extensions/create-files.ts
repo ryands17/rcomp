@@ -35,7 +35,7 @@ export default async (toolbox: GluegunEnhanced) => {
         }),
       ])
     } catch (e) {
-      print.error(`Couldn't create the component! Please try again`)
+      print.error(`Couldn't create the required component! Please try again`)
     }
   }
 
@@ -64,7 +64,7 @@ export default async (toolbox: GluegunEnhanced) => {
         }),
       ])
     } catch (e) {
-      print.error(`Couldn't create the component! Please try again`)
+      print.error(`Couldn't create the required page! Please try again`)
     }
   }
 

@@ -5,7 +5,9 @@ type Page = 'page'
 
 export type FileType = Component | Page
 
-export const fileTypes = {
+export const fileTypes: {
+  [key: string]: Component | Page
+} = {
   component: 'component',
   page: 'page',
 }

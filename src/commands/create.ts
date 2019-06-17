@@ -1,7 +1,7 @@
 import { capitalize } from 'lodash'
 import { fileTypes, GluegunEnhanced, FileType } from '../types'
 
-const isValidParameter = (param: string) => {
+const isValidParameter = (param: FileType) => {
   return (
     param !== undefined && [fileTypes.component, fileTypes.page].includes(param)
   )
@@ -19,7 +19,7 @@ export default {
     } = toolbox
 
     // check if there's a type provided on the command line first
-    let type = parameters.first as FileType
+    let type = parameters.first as FileType | undefined
 
     // if not a valid parameter, let's throw an error stating that's required
     if (!isValidParameter(type)) {
