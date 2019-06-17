@@ -1,0 +1,22 @@
+import React from 'react'
+<% if (!props.isScss) { %>
+  import { <%= props.name %>Styles } from './<%= props.name %>.styles'
+<% } else { %>
+  import './<%= props.name %>.scss'
+<% } %>
+
+function <%= props.name %>() {
+  return (
+    <% if (props.isScss) { %>
+      <div className="<%= props.name %>Styles">
+        <%= props.name %> works!
+      </div>
+    <% } else { %>
+      <<%= props.name %>Styles>
+        <%= props.name %> works!
+      </<%= props.name %>Styles>
+    <% } %>
+  )
+}
+
+export default <%= props.name %>
