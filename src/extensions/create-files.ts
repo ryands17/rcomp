@@ -8,7 +8,7 @@ export default async (toolbox: GluegunEnhanced) => {
     print,
   } = toolbox
   const pathPrefix = (type: FileType, name: string) =>
-    type === 'component' ? `app/components/${name}` : `app/pages/${name}`
+    type === 'component' ? `src/components/${name}` : `src/pages/${name}`
 
   const createFunctionComponent = ({ name, isScss, type }) => {
     try {

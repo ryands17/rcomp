@@ -41,12 +41,12 @@ export default {
         message: 'Select the type of the component',
         choices: [
           {
-            name: 'class',
-            message: 'Class Component',
-          },
-          {
             name: 'function',
             message: 'Function Component',
+          },
+          {
+            name: 'class',
+            message: 'Class Component',
           },
         ],
       },
@@ -55,11 +55,11 @@ export default {
         name: 'styleType',
         message: 'Select the style type you will be using',
         choices: [
+          { message: 'Styled Components', name: 'sc' },
           {
             message: 'SCSS',
             name: 'scss',
           },
-          { message: 'Styled Components', name: 'sc' },
         ],
       },
     ])
