@@ -25,19 +25,6 @@ Here the directory you specify will be the directories the components and pages 
 
 **Note**: The base directory will be `src` though.
 
-## Publishing to NPM
-
-To package your CLI up for NPM, do this:
-
-```shell
-$ npm login
-$ npm whoami
-$ npm lint
-$ npm test
-(if typescript, run `npm run build` here)
-$ npm publish
-```
-
 # License
 
 MIT - see LICENSE
