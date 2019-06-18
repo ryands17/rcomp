@@ -45,5 +45,5 @@ MIT - see LICENSE
 ### Enhancements
 
 - [ ] Write robust tests!
-- [x] Read components and pages folder from project config (currently statically set to `components` and `pages`)
+- [x] ~~Read components and pages folder from project config (currently statically set to `components` and `pages`)~~
 - [ ] Add support for .ts/.tsx
