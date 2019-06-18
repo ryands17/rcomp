@@ -1,5 +1,5 @@
 {
-  "name": "rcomp",
+  "name": "@ryands17/rcomp",
   "version": "1.0.0",
   "description": "A CLI tool for generating React Components",
   "bin": {
