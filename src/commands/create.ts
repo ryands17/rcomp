@@ -12,15 +12,10 @@ export default {
   alias: ['c'],
   description: 'Creates a component or a page by asking a set of questions',
   run: async (toolbox: GluegunEnhanced) => {
-    const {
-      parameters,
-      print,
-      prompt /* access from extensions like this, set: {createFile} */,
-    } = toolbox
+    const { parameters, print, prompt } = toolbox
 
     // check if there's a type provided on the command line first
     let type = parameters.first as FileType | undefined
-
     // if not a valid parameter, let's throw an error stating that's required
     if (!isValidParameter(type)) {
       print.error(

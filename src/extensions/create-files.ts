@@ -5,10 +5,19 @@ import { GluegunEnhanced, FileType } from '../types'
 export default async (toolbox: GluegunEnhanced) => {
   const {
     template: { generate },
+    config,
     print,
   } = toolbox
+
+  const cliConfig = {
+    componentsDirectory: config.componentsDirectory || 'components',
+    pagesDirectory: config.pagesDirectory || 'pages',
+  }
+
   const pathPrefix = (type: FileType, name: string) =>
-    type === 'component' ? `src/components/${name}` : `src/pages/${name}`
+    type === 'component'
+      ? `src/${cliConfig.componentsDirectory}/${name}`
+      : `src/${cliConfig.pagesDirectory}/${name}`
 
   const createFunctionComponent = ({ name, isScss, type }) => {
     try {
