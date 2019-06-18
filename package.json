@@ -13,7 +13,6 @@
     "url": "https://github.com/ryands17/rcomp/issues"
   },
   "scripts": {
-    "postinstall": "typesync",
     "format": "prettier --write **/*.{js,ts,tsx,json}",
     "lint": "tslint -p .",
     "clean-build": "rm -rf ./build",
