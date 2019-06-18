@@ -6,7 +6,6 @@ export default async (toolbox: GluegunEnhanced) => {
   const {
     template: { generate },
     config,
-    print,
   } = toolbox
 
   const cliConfig = {
@@ -20,61 +19,53 @@ export default async (toolbox: GluegunEnhanced) => {
       : `src/${cliConfig.pagesDirectory}/${name}`
 
   const createFunctionComponent = ({ name, isScss, type }) => {
-    try {
-      return Promise.all([
-        generate({
-          template: 'js/component.function.js.ejs',
-          target: `${pathPrefix(type, name)}/${name}.js`,
-          props: {
-            name,
-            isScss,
-          },
-        }),
-        generate({
-          template: isScss
-            ? 'js/component.scss.ejs'
-            : 'js/component.styles.js.ejs',
-          target: isScss
-            ? `${pathPrefix(type, name)}/${name}.scss`
-            : `${pathPrefix(type, name)}/${name}.styles.js`,
-          props: {
-            name,
-            isScss,
-          },
-        }),
-      ])
-    } catch (e) {
-      print.error(`Couldn't create the required component! Please try again`)
-    }
+    return Promise.all([
+      generate({
+        template: 'js/component.function.js.ejs',
+        target: `${pathPrefix(type, name)}/${name}.js`,
+        props: {
+          name,
+          isScss,
+        },
+      }),
+      generate({
+        template: isScss
+          ? 'js/component.scss.ejs'
+          : 'js/component.styles.js.ejs',
+        target: isScss
+          ? `${pathPrefix(type, name)}/${name}.scss`
+          : `${pathPrefix(type, name)}/${name}.styles.js`,
+        props: {
+          name,
+          isScss,
+        },
+      }),
+    ])
   }
 
   const createClassComponent = ({ name, isScss, type }) => {
-    try {
-      return Promise.all([
-        generate({
-          template: 'js/component.class.js.ejs',
-          target: `${pathPrefix(type, name)}/${name}.js`,
-          props: {
-            name,
-            isScss,
-          },
-        }),
-        generate({
-          template: isScss
-            ? 'js/component.scss.ejs'
-            : 'js/component.styles.js.ejs',
-          target: isScss
-            ? `${pathPrefix(type, name)}/${name}.scss`
-            : `${pathPrefix(type, name)}/${name}.styles.js`,
-          props: {
-            name,
-            isScss,
-          },
-        }),
-      ])
-    } catch (e) {
-      print.error(`Couldn't create the required page! Please try again`)
-    }
+    return Promise.all([
+      generate({
+        template: 'js/component.class.js.ejs',
+        target: `${pathPrefix(type, name)}/${name}.js`,
+        props: {
+          name,
+          isScss,
+        },
+      }),
+      generate({
+        template: isScss
+          ? 'js/component.scss.ejs'
+          : 'js/component.styles.js.ejs',
+        target: isScss
+          ? `${pathPrefix(type, name)}/${name}.scss`
+          : `${pathPrefix(type, name)}/${name}.styles.js`,
+        props: {
+          name,
+          isScss,
+        },
+      }),
+    ])
   }
 
   toolbox.createFunctionComponent = createFunctionComponent

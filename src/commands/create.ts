@@ -63,17 +63,29 @@ export default {
     const isScss = styleType === 'scss'
 
     if (componentType === 'function') {
-      toolbox.createFunctionComponent({
-        name,
-        isScss,
-        type,
-      })
+      try {
+        await toolbox.createFunctionComponent({
+          name,
+          isScss,
+          type,
+        })
+      } catch (e) {
+        print.error(
+          `Couldn't create the required ${fileTypes.component}! Please try again`
+        )
+      }
     } else {
-      toolbox.createClassComponent({
-        name,
-        isScss,
-        type,
-      })
+      try {
+        await toolbox.createClassComponent({
+          name,
+          isScss,
+          type,
+        })
+      } catch (e) {
+        print.error(
+          `Couldn't create the required ${fileTypes.page}! Please try again`
+        )
+      }
     }
   },
 }
