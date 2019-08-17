@@ -12,13 +12,19 @@ export const fileTypes: {
   page: 'page',
 }
 
-interface Params {
+interface IParams {
   type: FileType
   name: string
   isScss: boolean
 }
 
+export interface CliConfig {
+  componentsDirectory: string
+  pagesDirectory: string
+  outputExtension: 'ts' | 'js'
+}
+
 export interface GluegunEnhanced extends GluegunToolbox {
-  createFunctionComponent(params: Params): Promise<string[]>
-  createClassComponent(params: Params): Promise<string[]>
+  createFunctionComponent(params: IParams): Promise<string[]>
+  createClassComponent(params: IParams): Promise<string[]>
 }

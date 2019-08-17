@@ -1,6 +1,6 @@
 {
   "name": "@ryands17/rcomp",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A CLI tool for generating React Components",
   "bin": {
     "rcomp": "bin/rcomp"
@@ -13,7 +13,7 @@
     "url": "https://github.com/ryands17/rcomp/issues"
   },
   "scripts": {
-    "format": "prettier --write **/*.{js,ts,tsx,json}",
+    "format": "prettier --write **/*.{js,ts,ts,json}",
     "lint": "tslint -p .",
     "clean-build": "rm -rf ./build",
     "compile": "tsc -p .",

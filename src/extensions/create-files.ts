@@ -1,4 +1,5 @@
-import { GluegunEnhanced, FileType } from '../types'
+import { GluegunEnhanced, FileType, CliConfig } from '../types'
+import { generateExtension, generateReactExtension } from '../utils'
 
 // add your CLI-specific functionality here, which will then be accessible
 // to your commands
@@ -8,9 +9,11 @@ export default async (toolbox: GluegunEnhanced) => {
     config,
   } = toolbox
 
-  const cliConfig = {
-    componentsDirectory: config.componentsDirectory || 'components',
-    pagesDirectory: config.pagesDirectory || 'pages',
+  const cliConfig: CliConfig = {
+    componentsDirectory: 'components',
+    pagesDirectory: 'pages',
+    ...config,
+    outputExtension: generateExtension(config.outputExtension),
   }
 
   const pathPrefix = (type: FileType, name: string) =>
@@ -18,11 +21,14 @@ export default async (toolbox: GluegunEnhanced) => {
       ? `src/${cliConfig.componentsDirectory}/${name}`
       : `src/${cliConfig.pagesDirectory}/${name}`
 
+  const { outputExtension } = cliConfig
   const createFunctionComponent = ({ name, isScss, type }) => {
     return Promise.all([
       generate({
-        template: 'js/component.function.js.ejs',
-        target: `${pathPrefix(type, name)}/${name}.js`,
+        template: `${outputExtension}/component.function.js.ejs`,
+        target: `${pathPrefix(type, name)}/${name}.${generateReactExtension(
+          outputExtension
+        )}`,
         props: {
           name,
           isScss,
@@ -30,11 +36,11 @@ export default async (toolbox: GluegunEnhanced) => {
       }),
       generate({
         template: isScss
-          ? 'js/component.scss.ejs'
-          : 'js/component.styles.js.ejs',
+          ? 'scss/component.scss.ejs'
+          : `${outputExtension}/component.styles.js.ejs`,
         target: isScss
           ? `${pathPrefix(type, name)}/${name}.scss`
-          : `${pathPrefix(type, name)}/${name}.styles.js`,
+          : `${pathPrefix(type, name)}/${name}.styles.${outputExtension}`,
         props: {
           name,
           isScss,
@@ -46,8 +52,10 @@ export default async (toolbox: GluegunEnhanced) => {
   const createClassComponent = ({ name, isScss, type }) => {
     return Promise.all([
       generate({
-        template: 'js/component.class.js.ejs',
-        target: `${pathPrefix(type, name)}/${name}.js`,
+        template: `${outputExtension}/component.class.js.ejs`,
+        target: `${pathPrefix(type, name)}/${name}.${generateReactExtension(
+          outputExtension
+        )}`,
         props: {
           name,
           isScss,
@@ -55,11 +63,11 @@ export default async (toolbox: GluegunEnhanced) => {
       }),
       generate({
         template: isScss
-          ? 'js/component.scss.ejs'
-          : 'js/component.styles.js.ejs',
+          ? 'scss/component.scss.ejs'
+          : `${outputExtension}/component.styles.js.ejs`,
         target: isScss
           ? `${pathPrefix(type, name)}/${name}.scss`
-          : `${pathPrefix(type, name)}/${name}.styles.js`,
+          : `${pathPrefix(type, name)}/${name}.styles.${outputExtension}`,
         props: {
           name,
           isScss,

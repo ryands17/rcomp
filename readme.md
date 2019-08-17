@@ -13,15 +13,19 @@ Currently this plugin supports 2 options:
 
 ### Configuration options
 
-- You can specify the following configuration in your `package.json` to customize the components and pages directories
+- You can specify the following configuration in your `package.json`.
+
 ```json
 "rcomp": {
-  "componentsDirectory": "customComponents",
-  "pagesDirectory": "customPages"
+  "componentsDirectory": "yourComponentsDirectory", // default value: "components"
+  "pagesDirectory": "yourPagesDirectory", // default value: "pages"
+  "outputExtension": "ts" // default value: "js"
 }
 ```
 
-Here the directory you specify will be the directories the components and pages will be generated in.
+- `componentsDirectory`: The custom folder for components
+- `pagesDirectory`: The custom folder for pages
+- `outputExtension`: The generated extension for components (.js or .ts/.tsx)
 
 **Note**: The base directory will be `src` though.
 
@@ -33,4 +37,9 @@ MIT - see LICENSE
 
 - [ ] Write robust tests!
 - [x] ~~Read components and pages folder from project config (currently statically set to `components` and `pages`)~~
-- [ ] Add support for .ts/.tsx
+- [x] ~~Add support for .ts/.tsx~~
+
+### Changelog
+
+**Version 1.0.2**
+- Add support for the .ts/.tsx extension

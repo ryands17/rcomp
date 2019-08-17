@@ -15,7 +15,8 @@ export default {
     const { parameters, print, prompt } = toolbox
 
     // check if there's a type provided on the command line first
-    let type = parameters.first as FileType | undefined
+    const type = parameters.first as FileType | undefined
+
     // if not a valid parameter, let's throw an error stating that's required
     if (!isValidParameter(type)) {
       print.error(
@@ -24,7 +25,7 @@ export default {
       return
     }
 
-    let { name, componentType, styleType } = await prompt.ask([
+    const { name, componentType, styleType } = await prompt.ask([
       {
         type: 'input',
         name: 'name',
@@ -59,13 +60,13 @@ export default {
       },
     ])
 
-    name = capitalize(name)
+    const componentName = capitalize(name)
     const isScss = styleType === 'scss'
 
     if (componentType === 'function') {
       try {
         await toolbox.createFunctionComponent({
-          name,
+          name: componentName,
           isScss,
           type,
         })
@@ -77,7 +78,7 @@ export default {
     } else {
       try {
         await toolbox.createClassComponent({
-          name,
+          name: componentName,
           isScss,
           type,
         })
