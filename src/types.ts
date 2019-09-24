@@ -21,6 +21,7 @@ interface IParams {
 export interface CliConfig {
   componentsDirectory: string
   pagesDirectory: string
+  createStories: boolean
   outputExtension: 'ts' | 'js'
 }
 

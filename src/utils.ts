@@ -1,5 +1,7 @@
 import { CliConfig } from './types'
 
+export const scssPath = 'scss/component.scss.ejs'
+
 export const generateExtension = (
   extension: string
 ): CliConfig['outputExtension'] => {
