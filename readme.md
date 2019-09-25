@@ -13,21 +13,21 @@ Currently this plugin supports 2 options:
 
 ### Configuration options
 
-- You can specify the following configuration in your `package.json`.
+- You can specify the following configuration in your `package.json`. Default values for all are shown below
 
 ```json
 "rcomp": {
-  "componentsDirectory": "string", // default value: "components"
-  "pagesDirectory": "string", // default value: "pages"
-  "createStories": "boolean", // default value: false
-  "outputExtension": "string" // default value: "js"
+  "componentsDirectory": "components",
+  "pagesDirectory": "pages",
+  "createStories": false,
+  "outputExtension": "js"
 }
 ```
 
 - `componentsDirectory`: The custom folder for components
 - `pagesDirectory`: The custom folder for pages
 - `createStories`: If you want to generate stories for your component (if using Storybook)
-- `outputExtension`: The generated extension for components (.js or .ts/.tsx)
+- `outputExtension`: The generated extension for your project (.js or .ts)
 
 **Note**: The base directory will be `src` though.
 
@@ -42,6 +42,9 @@ MIT - see LICENSE
 - [x] ~~Add support for .ts/.tsx~~
 
 ### Changelog
+
+**Version 1.0.4**
+- Fix an issue where the users' custom config was not imported
 
 **Version 1.0.3**
 - Add support for generating stories for components (if using Storybook)

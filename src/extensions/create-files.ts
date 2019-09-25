@@ -6,15 +6,17 @@ import { generateExtension, generateReactExtension, scssPath } from '../utils'
 export default async (toolbox: GluegunEnhanced) => {
   const {
     template: { generate },
-    config,
+    config: { loadConfig },
   } = toolbox
+
+  const customConfig = { ...loadConfig('rcomp', process.cwd()) } as CliConfig
 
   const cliConfig: CliConfig = {
     componentsDirectory: 'components',
     pagesDirectory: 'pages',
     createStories: false,
-    ...config,
-    outputExtension: generateExtension(config.outputExtension),
+    ...customConfig,
+    outputExtension: generateExtension(customConfig.outputExtension),
   }
 
   const pathPrefix = (type: FileType, name: string) =>
@@ -86,19 +88,6 @@ export default async (toolbox: GluegunEnhanced) => {
           isScss,
         },
       }),
-      // stories
-      cliConfig.createStories &&
-        generate({
-          template: `${outputExtension}/stories.ejs`,
-          target: `${pathPrefix(
-            type,
-            name
-          )}/${name}.stories.${generateReactExtension(outputExtension)}`,
-          props: {
-            name,
-            fileName: `${name}.${generateReactExtension(outputExtension)}`,
-          },
-        }),
     ])
   }
 
