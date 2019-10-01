@@ -38,7 +38,7 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "gluegun": "^3.3.1",
+    "gluegun": "^4.0.0",
     "lodash": "^4.17.11",
     "typescript": "3.5.3"
   },
