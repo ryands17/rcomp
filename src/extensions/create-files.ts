@@ -7,9 +7,10 @@ export default async (toolbox: GluegunEnhanced) => {
   const {
     template: { generate },
     config: { loadConfig },
+    runtime: { brand },
   } = toolbox
 
-  const customConfig = { ...loadConfig('rcomp', process.cwd()) } as CliConfig
+  const customConfig = { ...loadConfig(brand, process.cwd()) } as CliConfig
 
   const cliConfig: CliConfig = {
     componentsDirectory: 'components',
