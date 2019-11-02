@@ -4,8 +4,8 @@ A CLI for generating React Components.
 
 ## Commands
 
-- `rconf create component` or `rconf c component` will generate a component in the **components** folder of `src` by default
-- `rconf create page` or `rconf c page` will generate a page / route in the **pages** folder of `src` by default
+- `rcomp create component` or `rcomp c component` will generate a component in the **components** folder of `src` by default
+- `rcomp create page` or `rcomp c page` will generate a page / route in the **pages** folder of `src` by default
 
 Currently this plugin supports 2 options:
 1. Creating a function or class Component
