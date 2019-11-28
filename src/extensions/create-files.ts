@@ -1,4 +1,4 @@
-import { GluegunEnhanced, FileType, CliConfig } from '../types'
+import { FileType, CliConfig, GluegunEnhanced } from '../types'
 import { generateExtension, generateReactExtension, scssPath } from '../utils'
 
 // add your CLI-specific functionality here, which will then be accessible

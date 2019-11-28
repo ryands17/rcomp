@@ -1,4 +1,4 @@
-import { GluegunToolbox } from 'gluegun'
+import { GluegunRunContext } from 'gluegun'
 
 type Component = 'component'
 type Page = 'page'
@@ -25,7 +25,7 @@ export interface CliConfig {
   outputExtension: 'ts' | 'js'
 }
 
-export interface GluegunEnhanced extends GluegunToolbox {
+export type GluegunEnhanced = GluegunRunContext & {
   createFunctionComponent(params: IParams): Promise<string[]>
   createClassComponent(params: IParams): Promise<string[]>
 }
