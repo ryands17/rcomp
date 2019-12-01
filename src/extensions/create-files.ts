@@ -26,7 +26,15 @@ export default async (toolbox: GluegunEnhanced) => {
       : `src/${cliConfig.pagesDirectory}/${name}`
 
   const { outputExtension } = cliConfig
-  const createFunctionComponent = ({ name, isScss, type }) => {
+  const createFunctionComponent = ({
+    name,
+    isScss,
+    type,
+  }: {
+    name: string
+    isScss: boolean
+    type: FileType
+  }) => {
     return Promise.all([
       // component/page
       generate({
@@ -52,6 +60,7 @@ export default async (toolbox: GluegunEnhanced) => {
       }),
       // stories
       cliConfig.createStories &&
+        type === 'component' &&
         generate({
           template: `${outputExtension}/stories.ejs`,
           target: `${pathPrefix(
@@ -89,6 +98,19 @@ export default async (toolbox: GluegunEnhanced) => {
           isScss,
         },
       }),
+      // stories
+      cliConfig.createStories &&
+        type === 'component' &&
+        generate({
+          template: `${outputExtension}/stories.ejs`,
+          target: `${pathPrefix(
+            type,
+            name
+          )}/${name}.stories.${generateReactExtension(outputExtension)}`,
+          props: {
+            name,
+          },
+        }),
     ])
   }
 

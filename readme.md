@@ -43,7 +43,7 @@ MIT - see LICENSE
 
 ### Changelog
 
-**Version 1.0.4**
+**Version 1.1.2**
 - Fix an issue where the users' custom config was not imported
 
 **Version 1.0.3**
