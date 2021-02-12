@@ -1,4 +1,3 @@
-import { capitalize } from 'lodash'
 import { fileTypes, GluegunEnhanced, FileType } from '../types'
 
 const isValidParameter = (param: FileType) => {
@@ -60,13 +59,12 @@ export default {
       },
     ])
 
-    const componentName = capitalize(name)
     const isScss = styleType === 'scss'
 
     if (componentType === 'function') {
       try {
         await toolbox.createFunctionComponent({
-          name: componentName,
+          name,
           isScss,
           type,
         })
@@ -78,7 +76,7 @@ export default {
     } else {
       try {
         await toolbox.createClassComponent({
-          name: componentName,
+          name,
           isScss,
           type,
         })
